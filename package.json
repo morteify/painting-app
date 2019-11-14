@@ -1,0 +1,25 @@
+{
+  "name": "painting-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morteify/painting-app.git"
+  },
+  "author": "Michał Węglarz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/morteify/painting-app/issues"
+  },
+  "homepage": "https://github.com/morteify/painting-app#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0"
+  },
+  "dependencies": {
+    "sass": "^1.23.3"
+  }
+}
