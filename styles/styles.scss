@@ -1,5 +1,5 @@
-@import 'bulma';
-@import '~bulma-slider';
+// @import 'bulma';
+// @import '~bulma-slider';
 
 html {
 	margin: 0;
@@ -8,16 +8,20 @@ html {
 	height: 100vh;
 }
 
+
 .columns {
-	margin: 0
+	margin: 0,
+
 }
 
 .tool-menu {
 	background: red;
 	height: 100%;
 	width: 3rem;
+
 	display: flex;
 	flex-direction: column;
+
 }
 
 .menu {
