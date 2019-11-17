@@ -9,8 +9,22 @@ html {
   margin: 0;
 }
 
+.tool-menu {
+  background: red;
+  height: 100%;
+  width: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .menu {
   height: 100%;
+  width: 15rem;
 }
 
 .column {
@@ -25,7 +39,6 @@ html {
 }
 
 #canvas {
-  width: 100%;
   height: 100vh;
   background: coral;
 }

@@ -13,43 +13,53 @@
 
 <body>
 	<div class="columns">
-		<div class="column is-2">
-			<aside class="menu">
-				<p class="menu-label">
-					General
-				</p>
-				<ul class="menu-list">
-					<li><a>Dashboard</a></li>
-					<li><a>Customers</a></li>
-				</ul>
-				<p class="menu-label">
-					Administration
-				</p>
-				<ul class="menu-list">
-					<li><a>Team Settings</a></li>
-					<li>
-						<a class="is-active">Manage Your Team</a>
-						<ul>
-							<li><a>Members</a></li>
-							<li><a>Plugins</a></li>
-							<li><a>Add a member</a></li>
-						</ul>
-					</li>
-					<li><a>Invitations</a></li>
-					<li><a>Cloud Storage Environment Settings</a></li>
-					<li><a>Authentication</a></li>
-				</ul>
-				<p class="menu-label">
-					Transactions
-				</p>
-				<ul class="menu-list">
-					<li><a>Payments</a></li>
-					<li><a>Transfers</a></li>
-					<li><a>Balance</a></li>
-				</ul>
+		<div class="column">
+			<aside class="tool-menu">
+				<span class="icon is-large">
+					<i class="fas fa-2x fa-pencil-alt"></i>
+				</span>
+				<span class="icon is-large">
+					<i class="fas fa-2x fa-paint-brush"></i>
+				</span>
+				<span class="icon is-large">
+					<i class="fas fa-2x fa-fill"></i>
+				</span>
+				<span class="icon is-large">
+					<i class="fas fa-2x fa-eraser"></i>
+				</span>
+				<span class="icon is-large">
+					<i class="far fa-2x fa-square"></i>
+				</span>
+				<span class="icon is-large">
+					<i class="fas fa-2x fa-image"></i>
+				</span>
 			</aside>
 		</div>
-		<div class="column is-10" id="canvas-container">
+		<div class="column ">
+			<aside class="menu">
+				<p class="menu-label">
+					Brush
+				</p>
+				<ul class="menu-list">
+					<li>
+						<p>Opacity</p>
+						<input class="slider is-fullwidth is-info" step="1" min="0" max="100" value="50" type="range">
+					</li>
+					<li>
+						<p>Size</p>
+						<input class="slider is-fullwidth is-large is-circle has-output" step="1" min="0" max="100"
+							value="50" type="range">
+					</li>
+					<li>
+						<p>Size</p>
+						<input class="slider is-fullwidth is-large is-danger is-circle has-output" step="1" min="0"
+							max="100" value="50" type="range">
+					</li>
+				</ul>
+
+			</aside>
+		</div>
+		<div class="column" id="canvas-container">
 			<canvas id="canvas"></canvas>
 		</div>
 	</div>

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "bulma": "^0.8.0",
+    "bulma-slider": "^2.0.0",
     "sass": "^1.23.3"
   }
 }
