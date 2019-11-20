@@ -1,5 +1,6 @@
 import { Canvas } from './src/Canvas.js'
 import { PaintingTool } from './src/PaintingTool.js'
+import { ImagePreview } from './src/Image.js'
 
 const canvasElement = document.querySelector('canvas')
 const canvasObject = new Canvas(canvasElement)
@@ -8,18 +9,18 @@ const ctx = canvasObject.context
 
 const paintingTool = new PaintingTool(canvas, ctx)
 
-const colorPicker = document.querySelector('.colorPicker')
-colorPicker.onchange = event => {
-	paintingTool.setLineProperties({ strokeStyle: event.target.value })
+const imageInput = document.querySelector('#image')
+const imagePreview = new ImagePreview(canvas, ctx)
+
+imagePreview.displayImagePreview(imageInput)
+const invertColorsButton = document.querySelector('#invert-colors-button')
+const greyScaleButton = document.querySelector('#greyscale-button')
+
+invertColorsButton.onclick = event => {
+	imagePreview.invertColors()
 }
 
-const opacitySlider = document.querySelector('.opacitySlider')
-opacitySlider.onchange = event => {
-	paintingTool.setLineProperties({ strokeStyleOpacity: event.target.value })
+greyScaleButton.onclick = event => {
+	imagePreview.setGrayscale()
 }
 
-
-const sizeSlider = document.querySelector('.sizeSlider')
-sizeSlider.onchange = event => {
-	paintingTool.setLineProperties({ lineWidth: event.target.value })
-}

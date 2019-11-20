@@ -1,12 +1,11 @@
 export class PaintingTool {
 	
 	constructor(canvas, context) {
+		this.canvas = canvas
 		this.context = context
 		this.MAIN_MOUSE_BUTTON = 0
 		this.shouldDraw = false
-		canvas.addEventListener('mousedown', this.startDrawing)
-		canvas.addEventListener('mouseup', this.endDrawing)
-		canvas.addEventListener('mousemove', this.moveDrawing, false)
+	
 		this.defaultLineProps = {
 			lineWidth: 30,
 			lineJoin: 'round',
@@ -14,7 +13,8 @@ export class PaintingTool {
 			strokeStyle: '#000000',			
 		}
 		this.setLineProperties(this.defaultLineProps)
-		// canvas.style.cursor = 'wait'
+		this.setEventListeners()
+		canvas.style.cursor = 'crosshair'
 	}
 
 
@@ -45,6 +45,27 @@ export class PaintingTool {
 			return `rgba${rgbaValues}`
 		}
 
+	}
+
+	setEventListeners = () => {
+		this.canvas.addEventListener('mousedown', this.startDrawing)
+		this.canvas.addEventListener('mouseup', this.endDrawing)
+		this.canvas.addEventListener('mousemove', this.moveDrawing, false)
+		
+		const colorPicker = document.querySelector('.colorPicker')
+		colorPicker.onchange = event => {
+			this.setLineProperties({ strokeStyle: event.target.value })
+		}
+
+		const opacitySlider = document.querySelector('.opacitySlider')
+		opacitySlider.onchange = event => {
+			this.setLineProperties({ strokeStyleOpacity: event.target.value })
+		}
+
+		const sizeSlider = document.querySelector('.sizeSlider')
+		sizeSlider.onchange = event => {
+			this.setLineProperties({ lineWidth: event.target.value })
+		}
 	}
 
 	setLineProperties = lineProps => {

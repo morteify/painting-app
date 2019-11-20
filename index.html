@@ -58,11 +58,20 @@
 							max="100" value="50" type="range">
 					</li>
 				</ul>
-
+				<input type="file" id="image" accept="image/png, image/jpeg">
+				<ul class="menu-list">
+					<li>
+						<input type="button" step="1" min="0" max="100" value="Invert colors" id="invert-colors-button">
+					</li>
+					<li>
+						<input type="button" step="1" min="0" max="100" value="Greyscale" id="greyscale-button">
+					</li>
+				</ul>
 			</aside>
 		</div>
 		<div class="column" id="canvas-container">
 			<canvas id="canvas"></canvas>
+			<img src="" id="image-preview" height=300 width=200>
 		</div>
 	</div>
 	<script type="module" src="main.js"></script>
