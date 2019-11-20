@@ -5,12 +5,15 @@ export class PaintingTool {
 		this.context = context
 		this.MAIN_MOUSE_BUTTON = 0
 		this.shouldDraw = false
-	
+		
+
 		this.defaultLineProps = {
 			lineWidth: 30,
 			lineJoin: 'round',
 			lineCap: 'round',
-			strokeStyle: '#000000',			
+			strokeStyle: '#000000',		
+			shadowColor: '#000000',
+			shadowBlur: 0
 		}
 		this.setLineProperties(this.defaultLineProps)
 		this.setEventListeners()
@@ -35,20 +38,27 @@ export class PaintingTool {
 		this.canvas.addEventListener('mouseup', this.endDrawing)
 		this.canvas.addEventListener('mousemove', this.moveDrawing, false)
 		
-		const colorPicker = document.querySelector('.colorPicker')
-		colorPicker.onchange = event => {
-			this.setLineProperties({ strokeStyle: event.target.value })
-		}
+		const elements = [
+			{className: '.color-picker', prop: 'strokeStyle'},
+			{className: '.opacity-slider', prop: 'strokeStyleOpacity'},
+			{className: '.size-slider', prop: 'lineWidth'},
+			{className: '.shadow-blur-slider', prop: 'shadowBlur'},
+			{className: '.line-cap-selector', prop: 'lineCap'},
+			{className: '.shadow-color-picker', prop: 'shadowColor'},
+		]
 
-		const opacitySlider = document.querySelector('.opacitySlider')
-		opacitySlider.onchange = event => {
-			this.setLineProperties({ strokeStyleOpacity: event.target.value })
-		}
-
-		const sizeSlider = document.querySelector('.sizeSlider')
-		sizeSlider.onchange = event => {
-			this.setLineProperties({ lineWidth: event.target.value })
-		}
+		elements.forEach(slider => {
+			try {
+				const elem = document.querySelector(slider.className)
+				console.log(elem)
+				elem.onchange = event => {
+					elem.value = event.target.value
+					this.setLineProperties({ [slider.prop]: event.target.value.toLowerCase() })
+				}
+			} catch(error) {
+				console.log(error)
+			}
+		})
 	}
 
 	setLineProperties = lineProps => {
@@ -59,7 +69,6 @@ export class PaintingTool {
 			return this.context[key] = val
 		})
 	}
-
 
 	startDrawing = event => {
 		if (event.button === this.MAIN_MOUSE_BUTTON) {

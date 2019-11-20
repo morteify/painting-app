@@ -70,4 +70,12 @@ body {
 #canvas {
   height: 100vh;
 }
+
+.file-menu-list * {
+  padding: 0.5rem 0;
+}
+
+.color-picker {
+  margin: 0.4rem 0;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -15,10 +15,10 @@
 	<div class="columns">
 		<div class="column">
 			<aside class="tool-menu">
-				<!-- <span class="icon is-large">
+				<span class="icon is-large">
 					<i class="fas fa-2x fa-pencil-alt"></i>
-				</span> -->
-				<span class="icon is-large" id="brush-menu">
+				</span>
+				<!-- <span class="icon is-large" id="brush-menu">
 					<i class="fas fa-2x fa-paint-brush"></i>
 				</span>
 				<span class="icon is-large" id="fill-menu">
@@ -29,7 +29,7 @@
 				</span>
 				<span class="icon is-large">
 					<i class="far fa-2x fa-square"></i>
-				</span>
+				</span> -->
 				<span class="icon is-large" id="file-menu">
 					<i class="fas fa-2x fa-image"></i>
 				</span>
@@ -40,35 +40,62 @@
 				<p class="menu-label">
 					Brush
 				</p>
-				<input type="color" class="colorPicker" name="head" value="#e66465">
 				<ul class="menu-list">
 					<li>
+						<p>Brush color</p>
+						<input type="color" class="color-picker button is-info is-outlined" name="head">
+					</li>
+					<li>
 						<p>Opacity</p>
-						<input class="slider is-fullwidth is-info opacitySlider" step="1" min="0" max="100" value="50"
+						<input class="slider is-fullwidth is-info opacity-slider" value=100 step="1" min="0" max="100"
 							type="range">
 					</li>
 					<li>
 						<p>Size</p>
-						<input class="slider is-fullwidth is-large is-circle has-output sizeSlider" step="1" min="0"
-							max="100" value="50" type="range">
+						<input class="slider is-fullwidth is-large is-circle has-output size-slider" value=50 step="1"
+							min="0" max="100" type="range">
+					</li>
+
+					<li>
+						<p>Shadow color</p>
+						<input type="color" class="shadow-color-picker button is-info is-outlined">
+					</li>
+
+					<li>
+						<p>Shadow blur</p>
+						<input class="slider is-fullwidth is-large is-circle has-output shadow-blur-slider" step="1"
+							min="0" max="100" value="0" type="range">
+					</li>
+
+					<li>
+						<div class="select">
+							<select class="line-cap-selector">
+								<option selected>Round</option>
+								<option>Square</option>
+								<option>Butt</option>
+							</select>
+						</div>
 					</li>
 				</ul>
 			</aside>
 			<aside class="menu file-menu disabled">
-				<input type="file" id="image" accept="image/png, image/jpeg">
-				<ul class="menu-list">
+				<ul class="menu-list file-menu-list">
 					<li>
-						<input type="button" step="1" min="0" max="100" value="Invert colors" id="invert-colors-button">
+						<input type="file" id="image" accept="image/png, image/jpeg">
 					</li>
 					<li>
-						<input type="button" step="1" min="0" max="100" value="Greyscale" id="greyscale-button">
+						<input class="button is-info is-outlined" type="button" value="Invert colors"
+							id="invert-colors-button">
+					</li>
+					<li>
+						<input class="button is-info is-outlined" type="button" value="Greyscale" id="greyscale-button">
 					</li>
 				</ul>
 			</aside>
 		</div>
 		<div class="column" id="canvas-container">
 			<canvas id="canvas"></canvas>
-			<img src="" id="image-preview" height=300 width=200>
+			<!-- <img src="" id="image-preview"> -->
 		</div>
 	</div>
 	<script type="module" src="main.js"></script>
