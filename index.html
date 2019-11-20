@@ -37,65 +37,82 @@
 		</div>
 		<div class="column ">
 			<aside class="menu brush-menu active">
-				<p class="menu-label">
-					Brush
-				</p>
-				<ul class="menu-list">
-					<li>
-						<p>Brush color</p>
-						<input type="color" class="color-picker button is-info is-outlined" name="head">
-					</li>
-					<li>
-						<p>Opacity</p>
-						<input class="slider is-fullwidth is-info opacity-slider" value=100 step="1" min="0" max="100"
-							type="range">
-					</li>
-					<li>
-						<p>Size</p>
-						<input class="slider is-fullwidth is-large is-circle has-output size-slider" value=50 step="1"
-							min="0" max="100" type="range">
-					</li>
+				<form>
+					<p class="menu-label">
+						Brush
+					</p>
+					<ul class="menu-list">
+						<li>
+							<p>Brush color</p>
+							<input type="color" class="color-picker button is-info is-outlined" name="head">
+						</li>
+						<li>
+							<p>Opacity</p>
+							<input class="slider is-fullwidth is-info opacity-slider" value=100 step="1" min="0"
+								max="100" type="range">
+						</li>
+						<li>
+							<p>Size</p>
+							<input class="slider is-fullwidth is-large is-circle has-output size-slider" value=50
+								step="1" min="0" max="100" type="range">
+						</li>
 
-					<li>
-						<p>Shadow color</p>
-						<input type="color" class="shadow-color-picker button is-info is-outlined">
-					</li>
+						<li>
+							<p>Shadow color</p>
+							<input type="color" class="shadow-color-picker button is-info is-outlined">
+						</li>
 
-					<li>
-						<p>Shadow blur</p>
-						<input class="slider is-fullwidth is-large is-circle has-output shadow-blur-slider" step="1"
-							min="0" max="100" value="0" type="range">
-					</li>
+						<li>
+							<p>Shadow blur</p>
+							<input class="slider is-fullwidth is-large is-circle has-output shadow-blur-slider" step="1"
+								min="0" max="100" value="0" type="range">
+						</li>
 
-					<li>
-						<div class="select">
-							<select class="line-cap-selector">
-								<option selected>Round</option>
-								<option>Square</option>
-								<option>Butt</option>
-							</select>
-						</div>
-					</li>
-				</ul>
+						<li>
+							<p>Line cap</p>
+							<div class="select">
+
+								<select class="line-cap-selector">
+									<option selected>Round</option>
+									<option>Square</option>
+									<option>Butt</option>
+								</select>
+							</div>
+						</li>
+					</ul>
+				</form>
 			</aside>
 			<aside class="menu file-menu disabled">
-				<ul class="menu-list file-menu-list">
-					<li>
-						<input type="file" id="image" accept="image/png, image/jpeg">
-					</li>
-					<li>
-						<input class="button is-info is-outlined" type="button" value="Invert colors"
-							id="invert-colors-button">
-					</li>
-					<li>
-						<input class="button is-info is-outlined" type="button" value="Greyscale" id="greyscale-button">
-					</li>
-				</ul>
+				<form>
+					<ul class="menu-list file-menu-list">
+						<li>
+							<input type="file" id="image" accept="image/png, image/jpeg">
+						</li>
+						<li>
+							<input class="button is-info is-outlined" type="button" value="Invert colors"
+								id="invert-colors-button">
+						</li>
+						<li>
+							<input class="button is-info is-outlined" type="button" value="Greyscale"
+								id="greyscale-button">
+						</li>
+
+						<li>
+							<p>Brightness</p>
+							<input class="slider is-fullwidth is-large is-circle has-output brightness-slider" step="1"
+								min="-100" max="100" value="0" type="range">
+						</li>
+						<li>
+							<p>Contrast</p>
+							<input class="slider is-fullwidth is-large is-circle has-output contrast-slider" step="1"
+								min="-100" max="100" value="0" type="range">
+						</li>
+					</ul>
+				</form>
 			</aside>
 		</div>
 		<div class="column" id="canvas-container">
 			<canvas id="canvas"></canvas>
-			<!-- <img src="" id="image-preview"> -->
 		</div>
 	</div>
 	<script type="module" src="main.js"></script>

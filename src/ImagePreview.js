@@ -45,4 +45,37 @@ export class ImagePreview {
 		  this.context.putImageData(imageData, 0, 0);
 	}
 
+	setBrightness = (brightness) => {
+		const imageData = this.context.getImageData(0, 0, canvas.width, canvas.height)
+		for (var i = 0; i < imageData.data.length; i+= 4) {
+			imageData.data[i] += 255 * (brightness / 100);
+			imageData.data[i+1] += 255 * (brightness / 100);
+			imageData.data[i+2] += 255 * (brightness / 100);
+		  }
+		this.context.putImageData(imageData, 0, 0);
+	}
+
+
+	truncateColor = (value) => {
+		if (value < 0) {
+		  value = 0;
+		} else if (value > 255) {
+		  value = 255;
+		}
+	  
+		return value;
+	  }
+	  
+	setContrast = contrast => {
+		const imageData = this.context.getImageData(0, 0, canvas.width, canvas.height)
+		const factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
+	  
+		for (let i = 0; i <imageData.data.length; i+= 4) {
+		 imageData.data[i] = this.truncateColor(factor * (imageData.data[i] - 128.0) + 128.0);
+		 imageData.data[i+1] = this.truncateColor(factor * (imageData.data[i+1] - 128.0) + 128.0);
+		 imageData.data[i+2] = this.truncateColor(factor * (imageData.data[i+2] - 128.0) + 128.0);
+		}
+		this.context.putImageData(imageData, 0, 0);
+	  }
+
 }

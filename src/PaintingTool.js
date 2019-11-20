@@ -6,7 +6,6 @@ export class PaintingTool {
 		this.MAIN_MOUSE_BUTTON = 0
 		this.shouldDraw = false
 		
-
 		this.defaultLineProps = {
 			lineWidth: 30,
 			lineJoin: 'round',
@@ -30,7 +29,6 @@ export class PaintingTool {
 			rgbaValues = rgbaValues.join(',')
 			return `rgba${rgbaValues}`
 		}
-
 	}
 
 	setEventListeners = () => {
@@ -50,7 +48,6 @@ export class PaintingTool {
 		elements.forEach(slider => {
 			try {
 				const elem = document.querySelector(slider.className)
-				console.log(elem)
 				elem.onchange = event => {
 					elem.value = event.target.value
 					this.setLineProperties({ [slider.prop]: event.target.value.toLowerCase() })
@@ -92,6 +89,5 @@ export class PaintingTool {
 			this.context.stroke()
 		}
 	}
-
 }
 
