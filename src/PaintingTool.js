@@ -17,24 +17,7 @@ export class PaintingTool {
 		canvas.style.cursor = 'crosshair'
 	}
 
-
-	// createSvgShape = () => {
-	// 	const ns = 'http://www.w3.org/2000/svg'
-	// 	const div = document.getElementById('drawing') 
-	// 	const svg = document.createElementNS(ns, 'svg')
-	// 	svg.setAttributeNS(null, 'width', '100%')
-	// 	svg.setAttributeNS(null, 'height', '100%')
-	// 	div.appendChild(svg)
-	// 	const rect = document.createElementNS(ns, 'rect')
-	// 	rect.setAttributeNS(null, 'width', 100)
-	// 	rect.setAttributeNS(null, 'height', 100)
-	// 	rect.setAttributeNS(null, 'fill', '#f06')
-	// 	svg.appendChild(rect)
-
-	// 	return svg
-	// }
-
-	static addOpacity(currentColor, val) {
+	addOpacity = (currentColor, val) => {
 		if (currentColor.includes('#'))
 			return `${currentColor}${val.padStart(2, '0')}`
 		if (currentColor.includes('rgba')) {
@@ -71,7 +54,7 @@ export class PaintingTool {
 	setLineProperties = lineProps => {
 		Object.entries(lineProps).forEach(([key, val]) => {
 			if (JSON.stringify(lineProps).includes('strokeStyleOpacity')) {
-				return this.context.strokeStyle = PaintingTool.addOpacity(this.context.strokeStyle, lineProps.strokeStyleOpacity)
+				return this.context.strokeStyle = this.addOpacity(this.context.strokeStyle, lineProps.strokeStyleOpacity)
 			}
 			return this.context[key] = val
 		})

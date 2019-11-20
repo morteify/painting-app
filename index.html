@@ -15,28 +15,28 @@
 	<div class="columns">
 		<div class="column">
 			<aside class="tool-menu">
-				<span class="icon is-large">
+				<!-- <span class="icon is-large">
 					<i class="fas fa-2x fa-pencil-alt"></i>
-				</span>
-				<span class="icon is-large">
+				</span> -->
+				<span class="icon is-large" id="brush-menu">
 					<i class="fas fa-2x fa-paint-brush"></i>
 				</span>
-				<span class="icon is-large">
+				<span class="icon is-large" id="fill-menu">
 					<i class="fas fa-2x fa-fill"></i>
 				</span>
-				<span class="icon is-large">
+				<span class="icon is-large" id="eraser-menu">
 					<i class="fas fa-2x fa-eraser"></i>
 				</span>
 				<span class="icon is-large">
 					<i class="far fa-2x fa-square"></i>
 				</span>
-				<span class="icon is-large">
+				<span class="icon is-large" id="file-menu">
 					<i class="fas fa-2x fa-image"></i>
 				</span>
 			</aside>
 		</div>
 		<div class="column ">
-			<aside class="menu">
+			<aside class="menu brush-menu active">
 				<p class="menu-label">
 					Brush
 				</p>
@@ -52,12 +52,9 @@
 						<input class="slider is-fullwidth is-large is-circle has-output sizeSlider" step="1" min="0"
 							max="100" value="50" type="range">
 					</li>
-					<li>
-						<p>Size</p>
-						<input class="slider is-fullwidth is-large is-danger is-circle has-output" step="1" min="0"
-							max="100" value="50" type="range">
-					</li>
 				</ul>
+			</aside>
+			<aside class="menu file-menu disabled">
 				<input type="file" id="image" accept="image/png, image/jpeg">
 				<ul class="menu-list">
 					<li>

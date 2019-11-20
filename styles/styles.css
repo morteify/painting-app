@@ -1,18 +1,47 @@
-html {
+body {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+}
+
+.active {
+  display: block;
+}
+
+.disabled {
+  display: none;
 }
 
 .columns {
+  margin: 0 !important;
+}
+
+.column {
+  height: 100vh;
+  -ms-flex-preferred-size: 0;
+      flex-basis: 0;
+  padding: 0 !important;
+}
+
+.menu {
+  height: 100%;
+  width: 15rem;
+  background: #f4f1ff;
+  padding: 1.5rem;
+}
+
+.menu-list {
+  padding: 1rem 0;
+}
+
+#canvas-container {
+  padding: 0;
   margin: 0;
 }
 
 .tool-menu {
-  background: red;
+  background: #26547c;
   height: 100%;
-  width: 3rem;
+  padding: 2rem 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,22 +49,22 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-
-.menu {
-  height: 100%;
-  width: 15rem;
-}
-
-.column {
-  height: 100vh;
-  -ms-flex-preferred-size: 0;
-      flex-basis: 0;
-}
-
-#canvas-container {
-  padding: 0;
   margin: 0;
+}
+
+.icon {
+  margin: 0.5rem 0;
+}
+
+.icon * {
+  fill: #fcfcfca6;
+}
+
+.icon:hover * {
+  fill: #fcfcfc;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  cursor: pointer;
 }
 
 #canvas {
