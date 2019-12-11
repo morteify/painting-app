@@ -5,8 +5,8 @@ import { ImagePreview } from './src/ImagePreview.js'
 const forms = document.querySelectorAll('form')
 const load = () => {
 	forms.forEach(form => form.reset())
-} 
-window.onload = load 
+}
+window.onload = load
 
 const canvasElement = document.querySelector('canvas')
 const canvasObject = new Canvas(canvasElement)
@@ -18,27 +18,35 @@ const imageInput = document.querySelector('#image')
 const imagePreview = new ImagePreview(canvas, ctx)
 imagePreview.displayImagePreview(imageInput)
 
+const chalkboard = document.querySelector('#chalkboard')
+chalkboard.addEventListener('click', event => {
+	event.preventDefault()
+	event.stopPropagation()
+	ctx.clearRect(0, 0, canvas.width, canvas.height)
+})
 
 const menus = document.querySelectorAll('.menu')
+
 
 function changeActiveTool(menus, activeTool) {
 	menus.forEach(item => {
 		const className = item.attributes.class.nodeValue
 		if (className.includes(activeTool)) {
 			if (className.includes('disabled')) {
-				item.attributes.class.nodeValue = className.replace('disabled', 'active')
+				item.attributes.class.nodeValue = className.replace(
+					'disabled',
+					'active'
+				)
 			}
-		}
-		else if (className.includes('active')) {
+		} else if (className.includes('active')) {
 			item.attributes.class.nodeValue = className.replace('active', 'disabled')
 		}
 	})
 }
 
-const iconButtons = document.querySelectorAll('.icon')
+const iconButtons = Array.from(document.querySelectorAll('.icon')).slice(0, 2)
 iconButtons.forEach(icon => {
 	icon.onclick = () => {
 		changeActiveTool(menus, icon.id)
 	}
 })
-
