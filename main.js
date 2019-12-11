@@ -15,8 +15,13 @@ const ctx = canvasObject.context
 
 const paintingTool = new PaintingTool(canvas, ctx)
 const imageInput = document.querySelector('#image')
+const sourceImage = imageInput.src
 const imagePreview = new ImagePreview(canvas, ctx)
 imagePreview.displayImagePreview(imageInput)
+
+
+
+
 
 const chalkboard = document.querySelector('#chalkboard')
 chalkboard.addEventListener('click', event => {

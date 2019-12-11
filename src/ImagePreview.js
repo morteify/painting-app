@@ -3,7 +3,12 @@ export class ImagePreview {
     this.canvas = canvas;
     this.context = context;
     this.imagePreview = new Image();
+    this._defaultImageData = null
     this.setEventListeners();
+  }
+
+  set defaultImageData(imageData) {
+    this._defaultImageData = imageData.data;
   }
 
   setEventListeners = () => {
@@ -39,13 +44,24 @@ export class ImagePreview {
         reader.onload = e => {
           this.imagePreview.src = e.target.result;
         };
+
         reader.readAsDataURL(imageInput.files[0]);
       }
     };
 
     this.imagePreview.addEventListener("load", e => {
       this.context.drawImage(this.imagePreview, 0, 0, 1920, 1080);
+      const imageData = this.context.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
+  
+      this.defaultImageData = imageData
     });
+
+
   };
 
   invertColors = () => {
@@ -88,7 +104,9 @@ export class ImagePreview {
       0,
       canvas.width,
       canvas.height
-    );
+    )
+    imageData.data.set(this._defaultImageData)
+
     for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i] += 255 * (brightness / 100);
       imageData.data[i + 1] += 255 * (brightness / 100);
@@ -98,12 +116,14 @@ export class ImagePreview {
   };
 
   setContrast = contrast => {
+
     const imageData = this.context.getImageData(
       0,
       0,
       canvas.width,
       canvas.height
-    );
+    )
+    imageData.data.set(this._defaultImageData)
     const factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
 
     const editColor = value => {
