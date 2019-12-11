@@ -22,6 +22,10 @@ export class ImagePreview {
       {
         className: ".contrast-slider",
         method: event => this.setContrast(parseInt(event, 10))
+      },
+      {
+        className: ".threshold-slider",
+        method: event => this.setThreshold(parseInt(event, 10))
       }
     ];
 
@@ -36,6 +40,17 @@ export class ImagePreview {
       }
     });
   };
+
+  restoreToDefault = () => {
+    const imageData = this.context.getImageData(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+    imageData.data.set(this._defaultImageData)
+    this.context.putImageData(imageData, 0, 0);
+  }
 
   displayImagePreview = imageInput => {
     imageInput.onchange = event => {
@@ -149,5 +164,25 @@ export class ImagePreview {
     }
     this.context.putImageData(imageData, 0, 0);
   };
+
+  setThreshold = threshold => {
+      const imageData = this.context.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      )
+      imageData.data.set(this._defaultImageData)
+      for (let i = 0; i < imageData.data.length; i += 4) {
+        const r = imageData.data[i];
+        const g = imageData.data[i+1];
+        const b = imageData.data[i+2];
+        const value = (0.2126 * r + 0.7152 * g + 0.0722 * b >= threshold) ? 255 : 0;
+        imageData.data[i] = imageData.data[i+1] = imageData.data[i+2] = value
+      }
+    
+      this.context.putImageData(imageData, 0, 0);
+  }
+
 }
 

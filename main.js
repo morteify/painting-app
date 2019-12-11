@@ -20,7 +20,10 @@ const imagePreview = new ImagePreview(canvas, ctx)
 imagePreview.displayImagePreview(imageInput)
 
 
-
+const restoreToDefault = document.querySelector('#restore-to-default')
+restoreToDefault.addEventListener('click', event => {
+	imagePreview.restoreToDefault()
+})
 
 
 const chalkboard = document.querySelector('#chalkboard')

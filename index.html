@@ -44,7 +44,7 @@
 						</li>
 						<li>
 							<p>Size</p>
-							<input class="slider is-fullwidth is-large is-circle has-output size-slider" value=50 step="1" min="0"
+							<input class="slider is-fullwidth is-large is-circle has-output size-slider" value=50 step="1" min="1"
 								max="100" type="range">
 						</li>
 
@@ -95,6 +95,10 @@
 							</div>
 						</li>
 						<li>
+							<input class="button is-danger is-light is-outlined" type="button" value="Restore to default"
+								id="restore-to-default">
+						</li>
+						<li>
 							<input class="button is-info is-outlined" type="button" value="Invert colors" id="invert-colors-button">
 						</li>
 						<li>
@@ -110,6 +114,11 @@
 							<p>Contrast</p>
 							<input class="slider is-fullwidth is-large is-circle has-output contrast-slider" step="1" min="-50"
 								max="50" value="0" type="range">
+						</li>
+						<li>
+							<p>Threshold</p>
+							<input class="slider is-fullwidth is-large is-circle has-output threshold-slider" step="1" min="50"
+								max="100" value="0" type="range">
 						</li>
 					</ul>
 				</form>
