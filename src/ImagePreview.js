@@ -3,6 +3,8 @@ export class ImagePreview {
     this.canvas = canvas;
     this.context = context;
     this.imagePreview = new Image();
+    this.imageWidth = this.imagePreview / 4;
+    this.imageHeight = this.imageHeight / 4;
     this._defaultImageData = null
     this.setEventListeners();
   }
@@ -45,8 +47,7 @@ export class ImagePreview {
     const imageData = this.context.getImageData(
       0,
       0,
-      canvas.width,
-      canvas.height
+      this.imagePreview.width / 3, this.imagePreview.height / 3
     );
     imageData.data.set(this._defaultImageData)
     this.context.putImageData(imageData, 0, 0);
@@ -65,12 +66,12 @@ export class ImagePreview {
     };
 
     this.imagePreview.addEventListener("load", e => {
-      this.context.drawImage(this.imagePreview, 0, 0, 1920, 1080);
+      this.context.clearRect(0, 0, canvas.width, canvas.height)
+      this.context.drawImage(this.imagePreview, 0, 0, this.imagePreview.width / 3, this.imagePreview.height / 3);
       const imageData = this.context.getImageData(
         0,
         0,
-        canvas.width,
-        canvas.height
+        this.imagePreview.width / 3, this.imagePreview.height / 3
       );
   
       this.defaultImageData = imageData
@@ -83,8 +84,8 @@ export class ImagePreview {
     const imageData = this.context.getImageData(
       0,
       0,
-      canvas.width,
-      canvas.height
+      this.imagePreview.width / 3, 
+      this.imagePreview.height / 3
     );
     for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i] = 255 - imageData.data[i];
@@ -100,8 +101,7 @@ export class ImagePreview {
     const imageData = this.context.getImageData(
       0,
       0,
-      canvas.width,
-      canvas.height
+      this.imagePreview.width / 3, this.imagePreview.height / 3
     );
     for (let i = 0; i < imageData.data.length; i += 4) {
       let average =
@@ -117,8 +117,7 @@ export class ImagePreview {
     const imageData = this.context.getImageData(
       0,
       0,
-      canvas.width,
-      canvas.height
+      this.imagePreview.width / 3, this.imagePreview.height / 3
     )
     imageData.data.set(this._defaultImageData)
 
@@ -135,8 +134,7 @@ export class ImagePreview {
     const imageData = this.context.getImageData(
       0,
       0,
-      canvas.width,
-      canvas.height
+      this.imagePreview.width / 3, this.imagePreview.height / 3
     )
     imageData.data.set(this._defaultImageData)
     const factor = (259.0 * (contrast + 255.0)) / (255.0 * (259.0 - contrast));
@@ -169,8 +167,7 @@ export class ImagePreview {
       const imageData = this.context.getImageData(
         0,
         0,
-        canvas.width,
-        canvas.height
+        this.imagePreview.width / 3, this.imagePreview.height / 3
       )
       imageData.data.set(this._defaultImageData)
       for (let i = 0; i < imageData.data.length; i += 4) {
